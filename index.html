@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>جدول امتحانات دبلوم التعليم العام</title>
+    <style>
+        /* التنسيقات العامة */
+        body {
+            font-family: 'Tajawal', sans-serif;
+            text-align: center;
+            direction: rtl;
+            background: linear-gradient(135deg, #1e1e2f, #2a2a40);
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: #fff;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        header img {
+            width: 100px;
+            border-radius: 50%;
+            border: 3px solid #fff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        h1 {
+            font-size: 28px;
+            margin: 0;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        #clock {
+            font-size: 20px;
+            font-weight: bold;
+            color: #fff;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 10px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+
+        #date {
+            font-size: 20px;
+            font-weight: bold;
+            color: #fff;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 10px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+
+        .motivation {
+            font-size: 20px;
+            font-weight: bold;
+            color: #27ae60;
+            margin: 20px auto;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            max-width: 800px;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        table {
+            width: 100%;
+            max-width: 900px;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        th, td {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            transition: background-color 0.3s ease;
+            font-size: 18px;
+        }
+
+        th {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: #fff;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        tr:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        tr:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .exam-day {
+            color: #27ae60;
+            font-weight: bold;
+        }
+
+        .exam-ended {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+
+        #countdown {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        footer {
+            margin-top: 40px;
+            padding: 15px;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: #fff;
+            font-size: 16px;
+            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* تأثيرات الحركة */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        table {
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        /* تنسيقات العد التنازلي */
+        .countdown-timer {
+            font-size: 18px;
+            color: #fff;
+            background-color: rgba(0, 0, 0, 0.3);
+            padding: 10px;
+            border-radius: 5px;
+            display: inline-block;
+            margin: 5px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* تنسيقات للأجهزة المحمولة */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 24px;
+            }
+
+            th, td {
+                padding: 10px;
+                font-size: 16px;
+            }
+
+            .countdown-timer {
+                font-size: 16px;
+            }
+
+            #clock, #date {
+                font-size: 16px;
+            }
+
+            .motivation {
+                font-size: 18px;
+            }
+        }
+
+        /* تنسيقات البحث */
+        #search {
+            margin: 20px auto;
+            padding: 10px;
+            width: 80%;
+            max-width: 400px;
+            font-size: 16px;
+            border: 2px solid #2c3e50;
+            border-radius: 10px;
+            outline: none;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
+        /* تنسيقات أزرار التحميل والتخصيص */
+        .buttons {
+            margin: 20px auto;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .buttons button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: #fff;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .buttons button:hover {
+            background: linear-gradient(135deg, #16213e, #1a1a2e);
+        }
+
+        /* تنسيقات التخصيص */
+        #customization {
+            margin: 20px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            max-width: 500px;
+        }
+
+        #customization label {
+            display: block;
+            margin: 10px 0;
+            font-size: 16px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        #customization select {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #2c3e50;
+            border-radius: 10px;
+            outline: none;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <header>
+        <div id="clock"></div>
+        <div class="logo-container">
+            <img src="https://e.top4top.io/p_3302it4a31.jpg" alt="شعار المدرسة">
+            <h1>جدول امتحانات دبلوم التعليم العام - الفصل الأول - الدور الأول 1446/1447هـ</h1>
+        </div>
+        <div id="date"></div>
+    </header>
+    <div class="motivation">
+        "النجاح هو مجموع الجهود الصغيرة التي تتكرر يوميًا. اجعل كل يوم فرصة للتقدم والتميز!"
+    </div>
+    <main>
+        <!-- حقل البحث -->
+        <input type="text" id="search" placeholder="ابحث عن المادة...">
+
+        <!-- جدول الامتحانات -->
+        <table>
+            <thead>
+                <tr>
+                    <th>اليوم</th>
+                    <th style="width: 150px;">التاريخ</th> <!-- توسيع عمود التاريخ -->
+                    <th>المادة</th>
+                    <th>الوقت</th>
+                    <th>العد التنازلي</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- الصفوف سيتم إضافتها بواسطة JavaScript -->
+            </tbody>
+        </table>
+
+        <!-- أزرار التحميل والتخصيص -->
+        <div class="buttons">
+            <button onclick="downloadPDF()">تحميل الجدول كملف PDF</button>
+            <button onclick="toggleCustomization()">تخصيص الواجهة</button>
+        </div>
+
+        <!-- قسم التخصيص -->
+        <div id="customization" style="display: none;">
+            <label for="font">اختر الخط:</label>
+            <select id="font" onchange="changeFont(this.value)">
+                <option value="Tajawal">Tajawal</option>
+                <option value="Arial">Arial</option>
+                <option value="Cairo">Cairo</option>
+            </select>
+
+            <label for="color">اختر لون الخلفية:</label>
+            <select id="color" onchange="changeColor(this.value)">
+                <option value="#1e1e2f">فاتح</option>
+                <option value="#2a2a40">متوسط</option>
+                <option value="#1a1a2e">غامق</option>
+            </select>
+        </div>
+
+        <div id="countdown"></div>
+    </main>
+    <footer>
+        تم إعداد هذا الموقع بواسطة مدرسة محمد بن سليمان الغافري للتعليم الأساسي
+    </footer>
+    <script>
+        // بيانات الامتحانات
+        const exams = [
+            { day: 'الخميس', date: '2025-01-22', subject: 'الرياضيات الأساسية و الرياضيات المتقدمة', time: '8:00 ص - 11:00 ص', duration: 3 },
+            { day: 'الأحد', date: '2025-01-26', subject: 'اللغة العربية', time: '8:00 ص - 11:00 ص', duration: 3 },
+            { day: 'الإثنين', date: '2025-01-27', subject: 'التاريخ (العالم من حولي)', time: '8:00 ص - 11:00 ص', duration: 3 },
+            { day: 'الثلاثاء', date: '2025-01-28', subject: 'الفيزياء', time: '8:00 ص - 11:00 ص', duration: 3 },
+            { day: 'الأربعاء', date: '2025-01-29', subject: 'التربية الإسلامية', time: '8:00 ص - 11:00 ص', duration: 3 },
+            { day: 'الأحد', date: '2025-02-02', subject: 'الأحياء', time: '8:00 ص - 11:00 ص', duration: 3 },
+            { day: 'الإثنين', date: '2025-02-03', subject: 'الدراسات الاجتماعية (هذا وطني)', time: '8:00 ص - 11:00 ص', duration: 3 },
+            { day: 'الثلاثاء', date: '2025-02-04', subject: 'اللغة الإنجليزية', time: '8:00 ص - 11:00 ص', duration: 3 },
+            { day: 'الأربعاء', date: '2025-02-05', subject: 'الجغرافيا والتقنيات الحديثة', time: '8:00 ص - 11:00 ص', duration: 3 },
+            { day: 'الخميس', date: '2025-02-06', subject: 'الكيمياء', time: '8:00 ص - 11:00 ص', duration: 3 }
+        ];
+
+        // إضافة الصفوف إلى الجدول
+        const tableBody = document.querySelector('table tbody');
+        exams.forEach(exam => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td class="exam-day">${exam.day}</td>
+                <td>${exam.date}</td>
+                <td>${exam.subject}</td>
+                <td>${exam.time}</td>
+                <td id="countdown-${exam.date.replace(/-/g, '')}"></td>
+            `;
+            tableBody.appendChild(row);
+        });
+
+        // تحديث العد التنازلي
+        function updateCountdown() {
+            exams.forEach(exam => {
+                const examDate = new Date(exam.date + 'T08:00:00');
+                const now = new Date();
+                const diff = examDate - now;
+
+                const countdownElement = document.getElementById(`countdown-${exam.date.replace(/-/g, '')}`);
+
+                if (diff > 0) {
+                    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+                    countdownElement.innerHTML = `
+                        <div class="countdown-timer">
+                            ${days} أيام ${hours} ساعات ${minutes} دقائق ${seconds} ثواني
+                        </div>
+                    `;
+                } else {
+                    countdownElement.innerHTML = `
+                        <div class="exam-ended">بدأ الامتحان</div>
+                    `;
+                }
+            });
+        }
+
+        // تحديث العد التنازلي كل ثانية
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // الساعة الرقمية والتاريخ
+        function updateClock() {
+            const now = new Date();
+            const time = now.toLocaleTimeString('ar-EG');
+            const date = now.toLocaleDateString('ar-EG', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+            document.getElementById('clock').innerText = time;
+            document.getElementById('date').innerText = date;
+        }
+
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        // نظام البحث
+        document.getElementById('search').addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            const rows = document.querySelectorAll('table tbody tr');
+
+            rows.forEach(row => {
+                const subject = row.querySelector('td:nth-child(3)').textContent.toLowerCase();
+                if (subject.includes(searchTerm)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        });
+
+        // تحميل الجدول كملف PDF
+        function downloadPDF() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            doc.text("جدول امتحانات دبلوم التعليم العام", 10, 10);
+            doc.autoTable({
+                html: 'table',
+                startY: 20,
+                theme: 'grid',
+                styles: { font: 'Tajawal', halign: 'right' },
+                columnStyles: { 0: { fontStyle: 'bold' } }
+            });
+
+            doc.save('جدول_الامتحانات.pdf');
+        }
+
+        // تخصيص الواجهة
+        function toggleCustomization() {
+            const customization = document.getElementById('customization');
+            customization.style.display = customization.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function changeFont(font) {
+            document.body.style.fontFamily = font;
+        }
+
+        function changeColor(color) {
+            document.body.style.background = color;
+        }
+    </script>
+</body>
+</html>
