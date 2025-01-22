@@ -155,12 +155,10 @@
         <h1>جدول امتحانات دبلوم التعليم العام - الفصل الأول - الدور الأول</h1>
 
         <div class="school-name">
-            مركز مدرسة محمد بن سليمان الغافري للتعليم الأساسي
+            مدرسة محمد بن سليمان الغافري للتعليم الأساسي
         </div>
 
         <div class="exam-info">
-            <p><strong>اليوم:</strong> <span id="examDay"></span></p>
-            <p><strong>التاريخ:</strong> <span id="examDate"></span></p>
             <div class="select-container">
                 <select onchange="showExam(this.value)">
                     <option value="" disabled selected>اختر المادة</option>
@@ -184,15 +182,9 @@
         // بيانات الامتحانات
         const exams = {
             mathBasic: {
-                day: "الخميس",
-                date: "2025-01-23", // تاريخ الاختبار بتنسيق YYYY-MM-DD
-                time: "08:00", // وقت الاختبار بتنسيق HH:MM
                 duration: "3 ساعات" // مدة الاختبار
             },
             mathAdvanced: {
-                day: "الخميس",
-                date: "2025-01-23", // تاريخ الاختبار بتنسيق YYYY-MM-DD
-                time: "08:00", // وقت الاختبار بتنسيق HH:MM
                 duration: "3 ساعات" // مدة الاختبار
             }
         };
@@ -201,19 +193,15 @@
 
         function showExam(examType) {
             const exam = exams[examType];
-            const examDayElement = document.getElementById('examDay');
-            const examDateElement = document.getElementById('examDate');
             const examSubjectElement = document.getElementById('examSubject');
             const examDurationElement = document.getElementById('examDuration');
             const countdownElement = document.getElementById('countdown');
             const messageElement = document.getElementById('message');
 
-            examDayElement.textContent = exam.day;
-            examDateElement.textContent = exam.date;
             examSubjectElement.textContent = examType === 'mathBasic' ? 'الرياضيات الأساسية' : 'الرياضيات المتقدمة';
             examDurationElement.textContent = exam.duration;
 
-            const examDateTime = new Date(`${exam.date}T${exam.time}:00`); // إنشاء كائن تاريخ ووقت
+            const examDateTime = new Date(`2025-01-23T08:00:00`); // تاريخ ووقت الاختبار
             const now = new Date();
 
             if (now < examDateTime) {
