@@ -41,15 +41,6 @@
             font-weight: bold;
             text-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
         }
-        .logo {
-            width: 150px;
-            margin-bottom: 30px;
-            animation: bounce 2s infinite;
-        }
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
 
         .header {
             display: flex;
@@ -57,15 +48,25 @@
             align-items: center;
             margin-bottom: 30px;
         }
-        .header .date {
+        .header .logo {
+            width: 120px;
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .header .date-time {
+            display: flex;
+            gap: 20px;
             font-size: 24px;
-            color: #ffdd57; /* لون ذهبي */
             font-weight: bold;
         }
-        .header .time {
-            font-size: 24px;
+        .header .date-time .date {
+            color: #ffdd57; /* لون ذهبي */
+        }
+        .header .date-time .time {
             color: #4cd137; /* لون أخضر */
-            font-weight: bold;
         }
 
         .button-container {
@@ -123,7 +124,7 @@
         /* تصميم متجاوب */
         @media (max-width: 768px) {
             h1 { font-size: 28px; }
-            .header .date, .header .time { font-size: 20px; }
+            .header .date-time { font-size: 20px; }
             .button { padding: 12px 24px; font-size: 16px; }
             .countdown { font-size: 36px; }
             .exam-info { font-size: 20px; }
@@ -134,13 +135,17 @@
 <body>
 
     <div class="container">
-        <img src="https://e.top4top.io/p_3302it4a31.jpg" alt="شعار المدرسة" class="logo">
-        <h1>جدول امتحانات دبلوم التعليم العام - الفصل الأول - الدور الأول</h1>
-        
         <div class="header">
-            <div class="date" id="date"></div>
-            <div class="time" id="time"></div>
+            <div class="date-time">
+                <div class="time" id="time"></div>
+            </div>
+            <img src="https://e.top4top.io/p_3302it4a31.jpg" alt="شعار المدرسة" class="logo">
+            <div class="date-time">
+                <div class="date" id="date"></div>
+            </div>
         </div>
+
+        <h1>جدول امتحانات دبلوم التعليم العام - الفصل الأول - الدور الأول</h1>
 
         <div class="button-container">
             <button class="button" onclick="showExam('mathBasic')">الرياضيات الأساسية</button>
@@ -165,14 +170,14 @@
         const exams = {
             mathBasic: {
                 day: "الخميس",
-                date: "23 يناير 2025",
-                time: "8:00 ص",
+                date: "2025-01-23", // تاريخ الاختبار بتنسيق YYYY-MM-DD
+                time: "08:00", // وقت الاختبار بتنسيق HH:MM
                 duration: 3 // مدة الاختبار بالساعات
             },
             mathAdvanced: {
                 day: "الخميس",
-                date: "23 يناير 2025",
-                time: "8:00 ص",
+                date: "2025-01-23", // تاريخ الاختبار بتنسيق YYYY-MM-DD
+                time: "08:00", // وقت الاختبار بتنسيق HH:MM
                 duration: 3 // مدة الاختبار بالساعات
             }
         };
@@ -192,7 +197,7 @@
                 <p><strong>الوقت:</strong> ${exam.time}</p>
             `;
 
-            const examDateTime = new Date(`${exam.date} ${exam.time}`);
+            const examDateTime = new Date(`${exam.date}T${exam.time}:00`); // إنشاء كائن تاريخ ووقت
             const now = new Date();
 
             if (now < examDateTime) {
