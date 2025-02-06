@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>انتهاء امتحانات الفصل الأول وبداية الفصل الدراسي الثاني</title>
+    <title>مدرسة محمد بن سليمان الغافري - تهنئة بالإجازة</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap');
 
         :root {
             --gold: #FFD700;
-            --deep-blue: #0a1931;
+            --deep-blue: #091833;
             --soft-blue: #1e3c72;
             --accent-light: #58a6ff;
-            --background-gradient: linear-gradient(to bottom, var(--deep-blue), var(--soft-blue));
+            --background-gradient: radial-gradient(circle at top, #12244b, #0a1931 90%);
         }
 
         * {
@@ -38,9 +38,9 @@
             width: 100%;
             max-width: 800px;
             background: rgba(0, 0, 0, 0.85);
-            padding: 30px;
+            padding: 35px;
             border-radius: 15px;
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+            box-shadow: 0 0 25px rgba(255, 215, 0, 0.4);
             border: 2px solid var(--gold);
             text-align: center;
             animation: fadeIn 1.2s ease-in-out;
@@ -73,48 +73,50 @@
 
         .datetime-box {
             background: rgba(255, 255, 255, 0.1);
-            padding: 10px 20px;
+            padding: 12px 22px;
             border-radius: 12px;
             border: 1px solid var(--gold);
             color: var(--gold);
-            font-size: 1.2em;
+            font-size: 1.3em;
+            font-weight: bold;
         }
 
         .main-title {
-            font-size: 2.3em;
+            font-size: 2.5em;
             color: var(--gold);
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
         }
 
         .message-box {
             background: linear-gradient(45deg, var(--soft-blue), var(--accent-light));
-            padding: 20px;
+            padding: 22px;
             border-radius: 12px;
-            font-size: 1.3em;
+            font-size: 1.4em;
             color: white;
-            line-height: 1.6;
-            margin-bottom: 30px;
-            box-shadow: 0 0 10px rgba(88, 166, 255, 0.4);
+            line-height: 1.8;
+            margin-bottom: 35px;
+            box-shadow: 0 0 15px rgba(88, 166, 255, 0.5);
         }
 
         .countdown-section {
-            margin-top: 20px;
+            margin-top: 25px;
         }
 
         .countdown-title {
-            font-size: 1.8em;
-            margin-bottom: 15px;
+            font-size: 1.9em;
+            margin-bottom: 18px;
         }
 
         .countdown-box {
             display: flex;
             justify-content: center;
-            gap: 15px;
-            padding: 15px;
+            gap: 20px;
+            padding: 18px;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 10px;
             border: 1px solid var(--gold);
-            box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
         }
 
         .time-unit {
@@ -123,21 +125,21 @@
         }
 
         .time-value {
-            font-size: 3em;
+            font-size: 3.2em;
             color: var(--gold);
             font-weight: bold;
-            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
         }
 
         .time-label {
             color: white;
-            font-size: 1.1em;
+            font-size: 1.2em;
         }
 
         @media (max-width: 768px) {
             .header {
                 flex-direction: column;
-                gap: 10px;
+                gap: 12px;
             }
 
             .logo {
@@ -146,7 +148,7 @@
             }
 
             .main-title {
-                font-size: 2em;
+                font-size: 2.2em;
             }
 
             .countdown-box {
@@ -165,18 +167,18 @@
             <div class="datetime-box" id="current-time"></div>
         </div>
 
-        <h1 class="main-title">انتهاء امتحانات الفصل الأول وبداية الفصل الدراسي الثاني</h1>
+        <h1 class="main-title">مدرسة محمد بن سليمان الغافري تهنئكم بالإجازة</h1>
 
         <div class="message-box">
             <p>
-                🎉 مبارك لطلابنا الأعزاء انتهاء الامتحانات!<br>
-                نستعد معكم لبداية الفصل الدراسي الثاني في 16 فبراير 2025.<br>
-                كونوا على استعداد لرحلة تعليمية جديدة مليئة بالنجاح والإبداع! 🚀
+                🎉 **مدرسة محمد بن سليمان الغافري** تهنئ أبناءها الطلبة وأعضاء الهيئة التعليمية والإدارية بمناسبة انتهاء اختبارات الفصل الدراسي الأول، متمنيةً للجميع إجازة سعيدة وممتعة.  
+                ☀️ **استغلوا هذه الفترة للراحة والتجديد، واستعدوا لفصل دراسي مليء بالتحديات والإنجازات.**  
+                🏫 **موعدنا يوم 16 فبراير 2025 لاستئناف رحلة العلم والنجاح! 🚀**
             </p>
         </div>
 
         <div class="countdown-section">
-            <h2 class="countdown-title">العد التنازلي لبدء الفصل الدراسي الثاني</h2>
+            <h2 class="countdown-title">العد التنازلي لبداية الفصل الدراسي الثاني</h2>
             <div class="countdown-box">
                 <div class="time-unit">
                     <div class="time-value" id="days">00</div>
@@ -197,21 +199,11 @@
     <script>
         function updateDateTime() {
             const now = new Date();
-            document.getElementById('current-date').textContent = now.toLocaleDateString('ar-SA');
-            document.getElementById('current-time').textContent = now.toLocaleTimeString('ar-SA');
+            document.getElementById('current-date').textContent = now.toLocaleDateString('en-GB');
+            document.getElementById('current-time').textContent = now.toLocaleTimeString('en-GB');
         }
 
-        function updateCountdown() {
-            const semesterStart = new Date('2025-02-16T00:00:00');
-            const now = new Date().getTime();
-            const distance = semesterStart - now;
-
-            document.getElementById('days').textContent = Math.floor(distance / (1000 * 60 * 60 * 24));
-            document.getElementById('hours').textContent = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            document.getElementById('minutes').textContent = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        }
-
-        setInterval(() => { updateDateTime(); updateCountdown(); }, 1000);
+        setInterval(updateDateTime, 1000);
     </script>
 
 </body>
