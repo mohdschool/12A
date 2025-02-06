@@ -3,217 +3,309 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>انتهاء امتحانات دبلوم التعليم العام - الفصل الأول - الدور الأول</title>
+    <title>انتهاء امتحانات الفصل الأول وبداية الفصل الدراسي الثاني</title>
     <style>
-        /* الخلفية المتحركة */
+        :root {
+            --gold: #FFD700;
+            --deep-blue: #0a1931;
+            --accent-red: #ff4757;
+        }
+
         body {
             font-family: 'Tajawal', sans-serif;
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #1e3c72, #2a5298);
-            overflow: hidden;
+            background: linear-gradient(135deg, var(--deep-blue), #1e3c72);
             min-height: 100vh;
+            overflow-x: hidden;
             display: flex;
             justify-content: center;
             align-items: center;
-        }
-        body::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://i.imgur.com/KjGfhdU.png') repeat;
-            opacity: 0.1;
-            animation: floatStars 20s linear infinite;
-            z-index: 1;
-        }
-        @keyframes floatStars {
-            from { transform: translateY(0); }
-            to { transform: translateY(-100%); }
+            position: relative;
         }
 
-        /* الحاوية */
+        .galaxy-effect {
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            background: radial-gradient(circle at 50% 50%, 
+                rgba(255, 255, 255, 0.1) 0%, 
+                rgba(255, 255, 255, 0) 70%);
+            animation: rotateGalaxy 240s linear infinite;
+            z-index: 0;
+        }
+
+        @keyframes rotateGalaxy {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
         .container {
             position: relative;
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(0, 0, 0, 0.7);
             padding: 40px;
             border-radius: 20px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(10px);
+            box-shadow: 0 0 50px rgba(255, 215, 0, 0.2);
+            backdrop-filter: blur(15px);
             max-width: 1200px;
             width: 90%;
-            animation: fadeIn 1s ease-in-out;
+            border: 2px solid var(--gold);
             z-index: 2;
-            border: 2px solid transparent;
-            background-clip: padding-box;
-            border-image: linear-gradient(135deg, #ffdd57, #ff6b6b) 1;
+            margin: 20px;
+            transition: transform 0.3s;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        h1 {
-            color: #fff;
-            margin-bottom: 30px;
-            font-size: 36px;
-            font-weight: bold;
-            text-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+        .container:hover {
+            transform: translateY(-5px);
         }
 
         .header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
+            position: relative;
         }
-        .header .logo {
-            width: 120px;
-            height: 120px;
+
+        .logo {
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
             object-fit: cover;
+            border: 3px solid var(--gold);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
             transition: transform 0.3s;
         }
-        .header .logo:hover {
-            transform: scale(1.1) rotate(5deg);
+
+        .logo:hover {
+            transform: rotate(360deg) scale(1.1);
         }
 
-        .header .date-time {
-            display: flex;
-            gap: 20px;
-            font-size: 24px;
-            font-weight: bold;
-        }
-        .header .date-time .date {
-            color: #ffdd57;
-        }
-        .header .date-time .time {
-            color: #4cd137;
-        }
-
-        .school-name {
-            font-size: 28px;
-            font-weight: bold;
-            color: #ffdd57;
-            margin-bottom: 30px;
-            border-bottom: 2px dashed rgba(255, 255, 255, 0.5);
-            padding-bottom: 10px;
-        }
-
-        .exam-info {
-            margin-top: 30px;
-            font-size: 24px;
-            color: #fff;
+        .datetime-box {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px 30px;
+            border-radius: 15px;
+            border: 1px solid var(--gold);
             text-align: center;
-            animation: slideIn 0.5s ease-in-out;
-            line-height: 1.8;
         }
 
-        .countdown-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-            margin-top: 30px;
+        .datetime-text {
+            font-size: 1.4em;
+            color: var(--gold);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
         }
-        .countdown-container .message {
-            font-size: 24px;
-            color: #ffdd57;
+
+        .main-title {
+            text-align: center;
+            color: var(--gold);
+            font-size: 2.5em;
+            margin: 30px 0;
+            position: relative;
+            padding-bottom: 15px;
         }
-        .countdown {
-            font-size: 48px;
-            color: #ff6b6b;
+
+        .main-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 3px;
+            background: linear-gradient(to right, transparent, var(--gold), transparent);
+        }
+
+        .countdown-section {
+            text-align: center;
+            margin: 50px 0;
+        }
+
+        .countdown-title {
+            font-size: 1.8em;
+            color: #fff;
+            margin-bottom: 30px;
+        }
+
+        .countdown-box {
+            display: inline-flex;
+            gap: 20px;
+            padding: 30px 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            border: 1px solid var(--gold);
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.2);
+        }
+
+        .time-unit {
+            text-align: center;
+        }
+
+        .time-value {
+            font-size: 3.5em;
+            color: var(--gold);
             font-weight: bold;
-            animation: pulse 1.5s infinite;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
         }
 
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+        .time-label {
+            color: #fff;
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
+
+        .message-box {
+            background: linear-gradient(45deg, #2c3e50, #3498db);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 40px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .message-text {
+            color: #fff;
+            font-size: 1.4em;
+            line-height: 1.8;
+            position: relative;
+            z-index: 1;
+        }
+
+        .message-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, 
+                transparent 0%, 
+                rgba(255, 255, 255, 0.1) 50%, 
+                transparent 100%);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         @media (max-width: 768px) {
-            h1 { font-size: 28px; }
-            .header .date-time { font-size: 20px; }
-            .countdown { font-size: 36px; }
-            .exam-info { font-size: 20px; }
-            .countdown-container .message { font-size: 20px; }
-            .school-name { font-size: 24px; }
+            .header {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .logo {
+                width: 120px;
+                height: 120px;
+            }
+
+            .main-title {
+                font-size: 2em;
+            }
+
+            .time-value {
+                font-size: 2.5em;
+            }
+
+            .countdown-box {
+                flex-direction: column;
+                padding: 20px;
+            }
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div class="galaxy-effect"></div>
+    
     <div class="container">
         <div class="header">
-            <div class="date-time">
-                <div class="time" id="time"></div>
+            <div class="datetime-box">
+                <div class="datetime-text" id="hijri-date"></div>
             </div>
             <img src="https://e.top4top.io/p_3302it4a31.jpg" alt="شعار المدرسة" class="logo">
-            <div class="date-time">
-                <div class="date" id="date"></div>
+            <div class="datetime-box">
+                <div class="datetime-text" id="current-time"></div>
             </div>
         </div>
-        <h1>جدول امتحانات دبلوم التعليم العام - الفصل الأول - الدور الأول</h1>
-        <div class="school-name">
-            مدرسة محمد بن سليمان الغافري للتعليم الأساسي
-        </div>
-        <div class="exam-info">
-            <p><strong>حصدتم ثمار جهدكم:</strong>
 
-مع انتهاء امتحانات الفصل الدراسي الأول، نبارك لأبنائنا الطلبة جهودهم، ونسأل الله لهم التوفيق والنجاح. اجتهدتم، وثابرتم، واليوم تطوون صفحة من الجد والاجتهاد استعدادًا لمرحلة جديدة من العلم والتفوق     </p>
-            
-        <div class="countdown-container">
-            <div class="message" id="message">امتحانات الفصل الدراسي الثاني  :</div>
-            <div id="countdown" class="countdown"></div>
+        <h1 class="main-title">انتهاء امتحانات الفصل الأول وبداية الفصل الدراسي الثاني</h1>
+
+        <div class="message-box">
+            <p class="message-text">
+                بقلوب ملؤها الفخر والاعتزاز، نبارك لطلابنا الأعزاء انتهاء امتحانات الفصل الدراسي الأول.<br>
+                لقد أبليتم بلاءً حسنًا، وها نحن نستقبل معكم الفصل الدراسي الثاني بكل آمالنا وطموحاتنا.<br>
+                استعدوا لرحلة جديدة من التميز والعطاء بدءًا من يوم 16 فبراير 2025
+            </p>
+        </div>
+
+        <div class="countdown-section">
+            <h2 class="countdown-title">العد التنازلي لبداية الفصل الدراسي الثاني</h2>
+            <div class="countdown-box">
+                <div class="time-unit">
+                    <div class="time-value" id="days">00</div>
+                    <div class="time-label">أيام</div>
+                </div>
+                <div class="time-unit">
+                    <div class="time-value" id="hours">00</div>
+                    <div class="time-label">ساعات</div>
+                </div>
+                <div class="time-unit">
+                    <div class="time-value" id="minutes">00</div>
+                    <div class="time-label">دقائق</div>
+                </div>
+                <div class="time-unit">
+                    <div class="time-value" id="seconds">00</div>
+                    <div class="time-label">ثواني</div>
+                </div>
+            </div>
         </div>
     </div>
 
     <script>
-        const examDateTime = new Date("2025-06-15T08:00:00");
-        const examDuration = 3 * 60 * 60 * 1000; // مدة الامتحان بالميلي ثانية
+        // تحديد تاريخ بداية الفصل الدراسي الثاني
+        const semesterStart = new Date('2025-02-16T00:00:00');
 
-        function updateClockAndDate() {
-            const now = new Date();
-            document.getElementById("date").textContent = now.toLocaleDateString("ar-EG", {
-                weekday: "long",
-                year: "numeric",
-                month: "long",
-                day: "numeric"
-            });
-            document.getElementById("time").textContent = now.toLocaleTimeString("ar-EG");
+        // تحديث التاريخ الهجري والوقت الحالي
+        function updateDateTime() {
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const hijriDate = new Intl.DateTimeFormat('ar-SA-u-ca-islamic', options).format(new Date());
+            document.getElementById('hijri-date').textContent = hijriDate;
+            
+            const timeOptions = { hour: '2-digit', minute: '2-digit', second: '2-digit' };
+            document.getElementById('current-time').textContent = new Date().toLocaleTimeString('ar-SA', timeOptions);
         }
 
+        // تحديث العد التنازلي
         function updateCountdown() {
-            const now = new Date();
-            const countdown = document.getElementById("countdown");
-            const message = document.getElementById("message");
+            const now = new Date().getTime();
+            const distance = semesterStart - now;
 
-            if (now < examDateTime) {
-                const timeLeft = examDateTime - now;
-                const hours = Math.floor(timeLeft / (1000 * 60 * 60));
-                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-                countdown.textContent = `${hours} ساعة ${minutes} دقيقة ${seconds} ثانية`;
-            } else if (now >= examDateTime && now < examDateTime.getTime() + examDuration) {
-                const timeLeft = examDateTime.getTime() + examDuration - now.getTime();
-                const hours = Math.floor(timeLeft / (1000 * 60 * 60));
-                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-                message.textContent = "الوقت المتبقي لانتهاء الاختبار:";
-                countdown.textContent = `${hours} ساعة ${minutes} دقيقة ${seconds} ثانية`;
-            } else {
-                message.textContent = "";
-                countdown.textContent = "انتهى وقت الاختبار!";
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+
+            if (distance < 0) {
+                document.querySelector('.countdown-title').textContent = "بدأ الفصل الدراسي الثاني!";
+                document.querySelector('.countdown-box').style.display = 'none';
             }
         }
 
-        setInterval(updateClockAndDate, 1000);
-        setInterval(updateCountdown, 1000);
-        updateClockAndDate();
+        // تحديث كل ثانية
+        setInterval(() => {
+            updateDateTime();
+            updateCountdown();
+        }, 1000);
+
+        // التشغيل الأولي
+        updateDateTime();
         updateCountdown();
     </script>
 </body>
