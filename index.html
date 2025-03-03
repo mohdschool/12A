@@ -1,239 +1,112 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مدرسة محمد بن سليمان الغافري - تهنئة بالإجازة</title>
+    <title>مدرستنا المعززة للصحة</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap');
-
-        :root {
-            --gold: #FFD700;
-            --deep-blue: #091833;
-            --soft-blue: #1e3c72;
-            --accent-light: #58a6ff;
-            --background-gradient: radial-gradient(circle at top, #12244b, #0a1931 90%);
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            scroll-behavior: smooth;
-        }
-
+        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700&display=swap');
         body {
             font-family: 'Tajawal', sans-serif;
-            background: var(--background-gradient);
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
-            overflow-y: auto;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 800px;
-            background: rgba(0, 0, 0, 0.85);
-            padding: 35px;
-            border-radius: 15px;
-            box-shadow: 0 0 25px rgba(255, 215, 0, 0.4);
-            border: 2px solid var(--gold);
             text-align: center;
-            animation: fadeIn 1.2s ease-in-out;
+            background: linear-gradient(to right, #4CAF50, #2E7D32);
+            color: #fff;
+            margin: 0;
+            padding: 0;
         }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
         .header {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 15px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .logo {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            border: 3px solid var(--gold);
-            box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
-            transition: transform 0.3s ease-in-out;
-        }
-
-        .logo:hover {
-            transform: rotate(360deg) scale(1.1);
-        }
-
-        .datetime-box {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 12px 22px;
-            border-radius: 12px;
-            border: 1px solid var(--gold);
-            color: var(--gold);
-            font-size: 1.3em;
-            font-weight: bold;
-        }
-
-        .main-title {
-            font-size: 2.5em;
-            color: var(--gold);
-            margin-bottom: 20px;
-            text-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
-        }
-
-        .message-box {
-            background: linear-gradient(45deg, var(--soft-blue), var(--accent-light));
-            padding: 22px;
-            border-radius: 12px;
-            font-size: 1.4em;
-            color: white;
-            line-height: 1.8;
-            margin-bottom: 35px;
-            box-shadow: 0 0 15px rgba(88, 166, 255, 0.5);
-        }
-
-        .countdown-section {
-            margin-top: 25px;
-        }
-
-        .countdown-title {
-            font-size: 1.9em;
-            margin-bottom: 18px;
-        }
-
-        .countdown-box {
-            display: flex;
             justify-content: center;
-            gap: 20px;
-            padding: 18px;
-            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-bottom: 3px solid #FFC107;
+            position: relative;
+            animation: glow 1.5s infinite alternate;
+        }
+        @keyframes glow {
+            from { box-shadow: 0 0 10px #FFC107; }
+            to { box-shadow: 0 0 20px #FFD54F; }
+        }
+        .header img {
+            width: 80px;
+            height: 80px;
+            margin: 0 15px;
             border-radius: 10px;
-            border: 1px solid var(--gold);
-            box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+            border: 2px solid #fff;
+            animation: fadeIn 2s ease-in-out;
         }
-
-        .time-unit {
-            text-align: center;
-            flex: 1;
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
         }
-
-        .time-value {
-            font-size: 3.2em;
-            color: var(--gold);
+        .content {
+            margin: 20px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0px 0px 15px rgba(0,0,0,0.2);
+            color: #333;
+        }
+        .tip {
+            background-color: #FFC107;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
             font-weight: bold;
-            text-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+            font-size: 18px;
+            color: #333;
         }
-
-        .time-label {
-            color: white;
-            font-size: 1.2em;
+        .video-container {
+            margin-top: 20px;
         }
-
-        @media (max-width: 768px) {
-            .header {
-                flex-direction: column;
-                gap: 12px;
-            }
-
-            .logo {
-                width: 100px;
-                height: 100px;
-            }
-
-            .main-title {
-                font-size: 2.2em;
-            }
-
-            .countdown-box {
-                flex-direction: column;
-                align-items: center;
-            }
+        .intro {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 10px;
         }
     </style>
 </head>
 <body>
-
-    <div class="container">
-        <div class="header">
-            <div class="datetime-box" id="current-date"></div>
-            <img src="https://e.top4top.io/p_3302it4a31.jpg" alt="شعار المدرسة" class="logo">
-            <div class="datetime-box" id="current-time"></div>
-        </div>
-
-        <h1 class="main-title">مدرسة محمد بن سليمان الغافري تهنئكم بالإجازة</h1>
-
-        <div class="message-box">
-            <p>
-                🎉 مدرسة محمد بن سليمان الغافري.. تهنئ أبناءها الطلبة وأعضاء الهيئة التعليمية والإدارية بمناسبة انتهاء اختبارات الفصل الدراسي الأول ، متمنيةً للجميع إجازة سعيدة وممتعة.  
-                ☀️ استغلوا هذه الفترة للراحة والتجديد، واستعدوا لفصل دراسي ملئ بالتحديات والإنجازات 
-                🏫 موعدنا يوم 16 فبراير 2025 لاستئناف رحلة العلم والنجاح! 🚀
-            </p>
-        </div>
-
-        <div class="countdown-section">
-            <h2 class="countdown-title">العد التنازلي لبداية الفصل الدراسي الثاني</h2>
-            <div class="countdown-box">
-                <div class="time-unit">
-                    <div class="time-value" id="days">00</div>
-                    <div class="time-label">يوم</div>
-                </div>
-                <div class="time-unit">
-                    <div class="time-value" id="hours">00</div>
-                    <div class="time-label">ساعة</div>
-                </div>
-                <div class="time-unit">
-                    <div class="time-value" id="minutes">00</div>
-                    <div class="time-label">دقيقة</div>
-                </div>
-            </div>
+    <div class="header">
+        <img src="https://j.top4top.io/p_3327lje811.jpg" alt="شعار المدرسة">
+        <h1>مدرسة محمد بن سليمان الغافري - المعززة للصحة</h1>
+        <img src="https://c.top4top.io/p_3349xjtcb1.jpeg" alt="شعار المدارس المعززة للصحة">
+    </div>
+    <div class="content">
+        <div class="intro">مرحباً بكم في منصتنا التوعوية للصحة المدرسية</div>
+        <p>تعرفوا على أفضل العادات الصحية للحفاظ على صحة الجسم والعقل.</p>
+        
+        <div class="tip" id="health-tip">نصيحة صحية ستظهر هنا...</div>
+        
+        <div class="video-container">
+            <h3>فيديو توعوي عن التغذية السليمة</h3>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/UfnP9Z-pHIM" frameborder="0" allowfullscreen></iframe>
         </div>
     </div>
 
     <script>
-        function updateDateTime() {
-            const now = new Date();
-            document.getElementById('current-date').textContent = now.toLocaleDateString('en-GB');
-
-            let hours = now.getHours();
-            let minutes = now.getMinutes();
-            let ampm = hours >= 12 ? 'PM' : 'AM';
-            hours = hours % 12 || 12;
-            minutes = minutes.toString().padStart(2, '0');
-            document.getElementById('current-time').textContent = `${hours}:${minutes} ${ampm}`;
+        const tips = [
+            "اشرب الماء بانتظام للحفاظ على ترطيب جسمك!",
+            "مارس الرياضة يوميًا لمدة 30 دقيقة على الأقل!",
+            "احرص على تناول وجبة إفطار صحية لبدء يومك بنشاط!",
+            "اغسل يديك جيدًا بالماء والصابون للوقاية من الأمراض!",
+            "تناول الفواكه والخضروات لتعزيز جهازك المناعي!"
+        ];
+        
+        function showRandomTip() {
+            const tipElement = document.getElementById("health-tip");
+            const randomIndex = Math.floor(Math.random() * tips.length);
+            tipElement.innerText = tips[randomIndex];
         }
-
-        function updateCountdown() {
-            const targetDate = new Date('2025-02-16T00:00:00');
-            const now = new Date();
-            const timeDifference = targetDate - now;
-
-            if (timeDifference > 0) {
-                const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
-
-                document.getElementById('days').textContent = days.toString().padStart(2, '0');
-                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-                document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-            } else {
-                document.getElementById('days').textContent = '00';
-                document.getElementById('hours').textContent = '00';
-                document.getElementById('minutes').textContent = '00';
-            }
-        }
-
-        setInterval(updateDateTime, 1000);
-        setInterval(updateCountdown, 1000);
-        updateDateTime();
-        updateCountdown();
+        
+        setInterval(showRandomTip, 5000);
+        showRandomTip();
     </script>
+</body>
+</html>
+
 
 </body>
 </html>
