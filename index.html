@@ -66,7 +66,6 @@
             font-weight: bold;
             margin-top: 10px;
         }
-        /* تنسيق زر العودة */
         .back-button {
             background-color: #FFC107;
             color: #333;
@@ -83,6 +82,51 @@
             transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
+
+        /* تنسيق قسم الصور المتحركة */
+        .slider {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin: 20px auto;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0px 0px 15px rgba(0,0,0,0.2);
+        }
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .slide {
+            min-width: 100%;
+            box-sizing: border-box;
+        }
+        .slide img {
+            width: 100%;
+            border-radius: 15px;
+        }
+        .slider-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 50%;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+        }
+        .slider-button:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        .prev {
+            left: 10px;
+        }
+        .next {
+            right: 10px;
+        }
     </style>
 </head>
 <body>
@@ -90,7 +134,6 @@
         <img src="https://j.top4top.io/p_3327lje811.jpg" alt="شعار المدرسة">
         <h1>مدرسة محمد بن سليمان الغافري - المعززة للصحة</h1>
         <img src="https://c.top4top.io/p_3349xjtcb1.jpeg" alt="شعار المدارس المعززة للصحة">
-        <!-- زر العودة إلى منصة تواصل -->
         <a href="https://mohdschool.github.io/platform/" class="back-button">العودة إلى منصة تواصل</a>
     </div>
     <div class="content">
@@ -99,6 +142,35 @@
         
         <div class="tip" id="health-tip">نصيحة صحية ستظهر هنا...</div>
         
+        <!-- قسم الصور المتحركة -->
+        <div class="slider">
+            <div class="slides">
+                <div class="slide">
+                    <img src="https://g.top4top.io/p_3369rvity1.png" alt="صورة 1">
+                </div>
+                <div class="slide">
+                    <img src="https://h.top4top.io/p_3369mpz8j2.png" alt="صورة 2">
+                </div>
+                <div class="slide">
+                    <img src="https://i.top4top.io/p_3369say263.png" alt="صورة 3">
+                </div>
+                <div class="slide">
+                    <img src="https://j.top4top.io/p_33692qog14.png" alt="صورة 4">
+                </div>
+                <div class="slide">
+                    <img src="https://k.top4top.io/p_3369sr7g65.png" alt="صورة 5">
+                </div>
+                <div class="slide">
+                    <img src="https://l.top4top.io/p_33699m0dw6.png" alt="صورة 6">
+                </div>
+                <div class="slide">
+                    <img src="https://a.top4top.io/p_3369s16cu7.png" alt="صورة 7">
+                </div>
+            </div>
+            <button class="slider-button prev" onclick="prevSlide()">&#10094;</button>
+            <button class="slider-button next" onclick="nextSlide()">&#10095;</button>
+        </div>
+
         <div class="video-container">
             <h3>فيديو توعوي عن التغذية السليمة</h3>
             <iframe width="560" height="315" src="https://www.youtube.com/embed/UfnP9Z-pHIM" frameborder="0" allowfullscreen></iframe>
@@ -122,9 +194,34 @@
         
         setInterval(showRandomTip, 5000);
         showRandomTip();
-    </script>
-</body>
-</html>
 
+        // JavaScript للتحكم في الصور المتحركة
+        let currentSlide = 0;
+        const slides = document.querySelector('.slides');
+        const totalSlides = document.querySelectorAll('.slide').length;
+
+        function showSlide(index) {
+            if (index >= totalSlides) {
+                currentSlide = 0;
+            } else if (index < 0) {
+                currentSlide = totalSlides - 1;
+            } else {
+                currentSlide = index;
+            }
+            const offset = -currentSlide * 100;
+            slides.style.transform = `translateX(${offset}%)`;
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+
+        function prevSlide() {
+            showSlide(currentSlide - 1);
+        }
+
+        // تحريك الصور تلقائيًا كل 5 ثوانٍ
+        setInterval(nextSlide, 5000);
+    </script>
 </body>
 </html>
