@@ -19,11 +19,12 @@
             padding: 15px;
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: space-between;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             border-bottom: 3px solid #FFC107;
             position: relative;
             animation: glow 1.5s infinite alternate;
+            flex-wrap: wrap; /* لجعل الهيدر متجاوبًا */
         }
         @keyframes glow {
             from { box-shadow: 0 0 10px #FFC107; }
@@ -32,7 +33,7 @@
         .header img {
             width: 80px;
             height: 80px;
-            margin: 0 15px;
+            margin: 0 10px;
             border-radius: 10px;
             border: 2px solid #fff;
             animation: fadeIn 2s ease-in-out;
@@ -40,6 +41,35 @@
         @keyframes fadeIn {
             from { opacity: 0; transform: scale(0.8); }
             to { opacity: 1; transform: scale(1); }
+        }
+        .header h1 {
+            font-size: 1.5rem;
+            margin: 0 10px;
+            flex: 1; /* لجعل العنوان يأخذ المساحة المتبقية */
+            text-align: center;
+        }
+        .header .school-info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .header .back-button {
+            background-color: #FFC107;
+            color: #333;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            border: 2px solid #fff;
+            margin: 10px;
+        }
+        .header .back-button:hover {
+            background-color: #FFD54F;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
         .content {
             margin: 20px;
@@ -65,22 +95,6 @@
             font-size: 20px;
             font-weight: bold;
             margin-top: 10px;
-        }
-        .back-button {
-            background-color: #FFC107;
-            color: #333;
-            padding: 10px 20px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: bold;
-            margin-left: 20px;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            border: 2px solid #fff;
-        }
-        .back-button:hover {
-            background-color: #FFD54F;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
         /* تنسيق قسم الصور المتحركة */
@@ -127,13 +141,33 @@
         .next {
             right: 10px;
         }
+
+        /* تحسينات للهواتف المحمولة */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.2rem;
+            }
+            .header .back-button {
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+            .content {
+                margin: 10px;
+                padding: 15px;
+            }
+            .slider {
+                max-width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="header">
-        <img src="https://j.top4top.io/p_3327lje811.jpg" alt="شعار المدرسة">
-        <h1>مدرسة محمد بن سليمان الغافري - المعززة للصحة</h1>
-        <img src="https://c.top4top.io/p_3349xjtcb1.jpeg" alt="شعار المدارس المعززة للصحة">
+        <div class="school-info">
+            <img src="https://j.top4top.io/p_3327lje811.jpg" alt="شعار المدرسة">
+            <h1>مدرسة محمد بن سليمان الغافري - المعززة للصحة</h1>
+            <img src="https://c.top4top.io/p_3349xjtcb1.jpeg" alt="شعار المدارس المعززة للصحة">
+        </div>
         <a href="https://mohdschool.github.io/platform/" class="back-button">العودة إلى منصة تواصل</a>
     </div>
     <div class="content">
@@ -173,7 +207,7 @@
 
         <div class="video-container">
             <h3>فيديو توعوي عن التغذية السليمة</h3>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/UfnP9Z-pHIM" frameborder="0" allowfullscreen></iframe>
+            <iframe width="100%" height="315" src="https://www.youtube.com/embed/UfnP9Z-pHIM" frameborder="0" allowfullscreen></iframe>
         </div>
     </div>
 
