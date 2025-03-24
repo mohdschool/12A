@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>مدرستنا المعززة للصحة</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700&display=swap');
+           @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700&display=swap');
         body {
             font-family: 'Tajawal', sans-serif;
             text-align: center;
@@ -191,6 +191,40 @@
             color: #333;
             text-align: center;
         }
+
+        /* تنسيق قسم الألعاب */
+        .games-section {
+            margin-top: 30px;
+            padding: 20px;
+            text-align: center;
+        }
+        .games-section h3 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .games-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .game-button {
+            background-color: #FFC107;
+            color: #333;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            border: 2px solid #fff;
+            cursor: pointer;
+        }
+        .game-button:hover {
+            background-color: #FFD54F;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
     </style>
 </head>
 <body>
@@ -290,9 +324,21 @@
             </div>
         </div>
     </div>
+        </div>
+
+        <!-- قسم الألعاب -->
+        <div class="games-section">
+            <h3>الألعاب التعليمية</h3>
+            <div class="games-buttons">
+                <button class="game-button" onclick="openGame('https://www.jigsawplanet.com/?rc=play&pid=0a5eabe00abb')">لعبة البازل 1</button>
+                <button class="game-button" onclick="openGame('https://www.jigsawplanet.com/?rc=play&pid=34b2794c0449')">لعبة البازل 2</button>
+                <button class="game-button" onclick="openGame('https://wordwall.net/ar/resource/39227933')">لعبة الورد وول</button>
+            </div>
+        </div>
+    </div>
 
     <script>
-  const tips = [
+        const tips = [
             "اشرب الماء بانتظام للحفاظ على ترطيب جسمك!",
             "مارس الرياضة يوميًا لمدة 30 دقيقة على الأقل!",
             "احرص على تناول وجبة إفطار صحية لبدء يومك بنشاط!",
@@ -336,6 +382,11 @@
 
         // تحريك الصور تلقائيًا كل 5 ثوانٍ
         setInterval(nextSlide, 5000);
+
+        // دالة لفتح الألعاب في نافذة جديدة
+        function openGame(url) {
+            window.open(url, '_blank', 'width=800,height=600');
+        }
     </script>
 </body>
 </html>
