@@ -159,6 +159,38 @@
                 max-width: 100%;
             }
         }
+
+        /* تنسيق قسم الفيديوهات */
+        .videos-section {
+            margin-top: 30px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        .video-item {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0px 0px 15px rgba(0,0,0,0.2);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .video-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 10px 20px rgba(0,0,0,0.3);
+        }
+        .video-item video {
+            width: 100%;
+            height: auto;
+            border-radius: 15px 15px 0 0;
+        }
+        .video-item h4 {
+            padding: 15px;
+            margin: 0;
+            font-size: 18px;
+            color: #333;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -205,14 +237,62 @@
             <button class="slider-button next" onclick="nextSlide()">&#10095;</button>
         </div>
 
-        <div class="video-container">
-            <h3>فيديو توعوي عن التغذية السليمة</h3>
-            <iframe width="100%" height="315" src="https://www.youtube.com/embed/UfnP9Z-pHIM" frameborder="0" allowfullscreen></iframe>
+        <!-- قسم الفيديوهات -->
+        <div class="videos-section">
+            <div class="video-item">
+                <video controls>
+                    <source src="https://d.top4top.io/m_337083mj51.mp4" type="video/mp4">
+                    متصفحك لا يدعم تشغيل الفيديو.
+                </video>
+                <h4>الفيديو 1: عنوان الفيديو الأول</h4>
+            </div>
+            <div class="video-item">
+                <video controls>
+                    <source src="https://l.top4top.io/m_33706p0a51.mp4" type="video/mp4">
+                    متصفحك لا يدعم تشغيل الفيديو.
+                </video>
+                <h4>الفيديو 2: عنوان الفيديو الثاني</h4>
+            </div>
+            <div class="video-item">
+                <video controls>
+                    <source src="https://g.top4top.io/m_3370bjsdi1.mp4" type="video/mp4">
+                    متصفحك لا يدعم تشغيل الفيديو.
+                </video>
+                <h4>الفيديو 3: عنوان الفيديو الثالث</h4>
+            </div>
+            <div class="video-item">
+                <video controls>
+                    <source src="https://i.top4top.io/m_3370oddmt1.mp4" type="video/mp4">
+                    متصفحك لا يدعم تشغيل الفيديو.
+                </video>
+                <h4>الفيديو 4: عنوان الفيديو الرابع</h4>
+            </div>
+            <div class="video-item">
+                <video controls>
+                    <source src="https://d.top4top.io/m_3370jreeo1.mp4" type="video/mp4">
+                    متصفحك لا يدعم تشغيل الفيديو.
+                </video>
+                <h4>الفيديو 5: عنوان الفيديو الخامس</h4>
+            </div>
+            <div class="video-item">
+                <video controls>
+                    <source src="https://h.top4top.io/m_3370ki6a51.mp4" type="video/mp4">
+                    متصفحك لا يدعم تشغيل الفيديو.
+                </video>
+                <h4>الفيديو 6: عنوان الفيديو السادس</h4>
+            </div>
+            <div class="video-item">
+                <video controls>
+                    <source src="https://h.top4top.io/m_3370ki6a51.mp4" type="video/mp4">
+                    متصفحك لا يدعم تشغيل الفيديو.
+                </video>
+                <h4>الفيديو 7: عنوان الفيديو السابع</h4>
+            </div>
         </div>
     </div>
 
     <script>
-        const tips = [
+  const tips = [
             "اشرب الماء بانتظام للحفاظ على ترطيب جسمك!",
             "مارس الرياضة يوميًا لمدة 30 دقيقة على الأقل!",
             "احرص على تناول وجبة إفطار صحية لبدء يومك بنشاط!",
