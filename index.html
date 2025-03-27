@@ -225,10 +225,66 @@
             transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
+
+        /* تنسيق النافذة الإعلانية المتحركة */
+        .announcement-box {
+            background: linear-gradient(to right, #4CAF50, #2E7D32);
+            color: white;
+            padding: 20px;
+            margin: 20px auto;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            max-width: 600px;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid #FFC107;
+        }
+        
+        .announcement-text {
+            height: 120px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .scroll-text {
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            transform: translateY(100%);
+            animation: scrollUp 15s linear infinite;
+            font-size: 18px;
+            line-height: 1.6;
+            direction: rtl;
+        }
+        
+        @keyframes scrollUp {
+            0% {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+        }
+        
+        .announcement-title {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #FFC107;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
-    <div class="header">
+       <div class="header">
         <div class="school-info">
             <img src="https://j.top4top.io/p_3327lje811.jpg" alt="شعار المدرسة">
             <h1>مدرسة محمد بن سليمان الغافري - المعززة للصحة</h1>
@@ -241,10 +297,10 @@
         <p>تعرفوا على أفضل العادات الصحية للحفاظ على صحة الجسم والعقل.</p>
         
         <div class="tip" id="health-tip">نصيحة صحية ستظهر هنا...</div>
-        
-        <!-- قسم الصور المتحركة -->
-        <div class="slider">
-            <div class="slides">
+
+    <!-- قسم الصور المتحركة -->
+    <div class="slider">
+           <div class="slides">
                 <div class="slide">
                     <img src="https://d.top4top.io/p_3370jbf3n1.jpg" alt="صورة 1">
                 </div>
@@ -271,7 +327,25 @@
             <button class="slider-button next" onclick="nextSlide()">&#10095;</button>
         </div>
 
-        <!-- قسم الفيديوهات -->
+    </div>
+
+    <!-- النافذة الإعلانية الجديدة -->
+    <div class="announcement-box">
+        <div class="announcement-title">إعلان هام</div>
+        <div class="announcement-text">
+            <div class="scroll-text">
+                مدرسة محمد بن سليمان الغافري من المدارس المعززة للصحة<br>
+                نسعد بانضمامنا لبرنامج المدارس المعززة للصحة<br>
+                وسنعمل على تنفيذ مشاريع ومسابقات للتوعية الصحية<br>
+                في مجالات التغذية السليمة والعادات الصحية السليمة<br>
+                لأن العقل السليم في الجسم السليم<br>
+                انتظرونا في فعالياتنا ومسابقاتنا القادمة<br>
+                معاً لبناء جيل صحي وواعي
+            </div>
+        </div>
+    </div>
+
+    <!-- قسم الفيديوهات -->
         <div class="videos-section">
             <div class="video-item">
                 <video controls>
@@ -337,8 +411,9 @@
         </div>
     </div>
 
+
     <script>
-        const tips = [
+         const tips = [
             "اشرب الماء بانتظام للحفاظ على ترطيب جسمك!",
             "مارس الرياضة يوميًا لمدة 30 دقيقة على الأقل!",
             "احرص على تناول وجبة إفطار صحية لبدء يومك بنشاط!",
@@ -387,6 +462,49 @@
         function openGame(url) {
             window.open(url, '_blank', 'width=800,height=600');
         }
+
+        // إضافة تأثير الكتابة التدريجية للنصوص الإعلانية
+        document.addEventListener('DOMContentLoaded', function() {
+            const announcementText = document.querySelector('.scroll-text');
+            const originalText = announcementText.innerHTML;
+            announcementText.innerHTML = '';
+            
+            const lines = originalText.split('<br>');
+            let currentLine = 0;
+            
+            function typeWriter() {
+                if (currentLine < lines.length) {
+                    const lineDiv = document.createElement('div');
+                    announcementText.appendChild(lineDiv);
+                    typeLine(lineDiv, lines[currentLine], () => {
+                        currentLine++;
+                        setTimeout(typeWriter, 1000);
+                    });
+                } else {
+                    // إعادة التشغيل بعد الانتهاء
+                    setTimeout(() => {
+                        announcementText.innerHTML = '';
+                        currentLine = 0;
+                        typeWriter();
+                    }, 5000);
+                }
+            }
+            
+            function typeLine(element, text, callback) {
+                let i = 0;
+                const typing = setInterval(() => {
+                    if (i < text.length) {
+                        element.innerHTML += text.charAt(i);
+                        i++;
+                    } else {
+                        clearInterval(typing);
+                        if (callback) callback();
+                    }
+                }, 50);
+            }
+            
+            typeWriter();
+        });
     </script>
 </body>
 </html>
